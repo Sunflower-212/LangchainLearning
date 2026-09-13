@@ -1,0 +1,1089 @@
+Python 基础语法详细教程
+=======================
+
+前言
+----
+本文适合 Python 初学者，内容覆盖 Python 基础语法、常用数据类型、流程控制、函数、模块、异常处理、文件操作、面向对象、生成器、装饰器、标准库、虚拟环境、编码规范等。你可以把本文当作速查手册，也可以按顺序学习。
+
+一、Python 简介
+---------------
+Python 是一种解释型、面向对象、动态数据类型的高级程序设计语言。它的语法简洁清晰，适合初学者，也广泛用于 Web 开发、数据分析、人工智能、自动化脚本、爬虫、测试开发等领域。
+
+Python 的主要特点：
+1. 语法简单，可读性强。
+2. 跨平台，Windows、macOS、Linux 都可以运行。
+3. 拥有大量第三方库。
+4. 支持面向对象、函数式、过程式编程。
+5. 解释执行，开发效率高。
+
+常见 Python 版本：
+Python 2 已经停止维护，不建议学习。
+Python 3 是当前主流版本，建议使用 Python 3.8 以上，最好 3.10 以上。
+
+二、安装与运行
+---------------
+1. 下载 Python
+   访问 python.org，下载对应系统的安装包。
+   Windows 安装时记得勾选 “Add Python to PATH”。
+
+2. 检查是否安装成功
+   打开命令行，输入：
+   python --version
+   或：
+   python3 --version
+
+3. 运行 Python 的三种方式
+   方式一：交互式命令行
+   输入 python 或 python3，进入 >>> 提示符，可以直接输入代码。
+
+   方式二：脚本文件
+   新建 hello.py，写入代码，然后运行：
+   python hello.py
+
+   方式三：IDE 或编辑器
+   常用工具：PyCharm、VS Code、Jupyter Notebook、Thonny。
+
+三、第一个程序
+---------------
+print("Hello, Python!")
+
+解释：
+print 是内置函数，用于输出内容到控制台。
+字符串可以用单引号或双引号括起来。
+
+四、注释
+---------
+注释用于解释代码，不会被执行。
+
+单行注释：
+# 这是单行注释
+print("Hello")  # 这是行尾注释
+
+多行注释：
+"""
+这是多行注释
+通常用三个双引号
+"""
+'''
+也可以用三个单引号
+'''
+
+注意：三引号本质上是多行字符串，但常被当作多行注释使用。
+
+五、变量与标识符
+-----------------
+Python 变量不需要提前声明类型，直接赋值即可。
+
+name = "Alice"
+age = 18
+height = 1.65
+is_student = True
+
+变量命名规则：
+1. 只能包含字母、数字、下划线。
+2. 不能以数字开头。
+3. 不能使用 Python 关键字，如 if、for、class。
+4. 区分大小写，Name 和 name 是两个不同变量。
+5. 建议使用有意义的英文名，多个单词用下划线连接，如 user_name。
+
+常见命名风格：
+变量名、函数名：小写加下划线，如 get_name。
+类名：大驼峰，如 StudentInfo。
+常量：全大写加下划线，如 MAX_COUNT。
+
+六、基本数据类型
+-----------------
+1. 整数 int
+   a = 10
+   b = -5
+   c = 0
+
+2. 浮点数 float
+   pi = 3.14
+   price = 19.99
+
+3. 字符串 str
+   s1 = "hello"
+   s2 = 'world'
+   s3 = "Python 基础"
+
+4. 布尔值 bool
+   True 和 False
+   is_ok = True
+   is_finished = False
+
+5. 空值 NoneType
+   result = None
+
+查看类型：
+print(type(10))        # <class 'int'>
+print(type(3.14))      # <class 'float'>
+print(type("abc"))     # <class 'str'>
+print(type(True))      # <class 'bool'>
+print(type(None))      # <class 'NoneType'>
+
+七、类型转换
+-------------
+int("123")       # 123
+float("3.14")    # 3.14
+str(100)         # "100"
+bool(0)          # False
+bool(1)          # True
+list("abc")      # ['a', 'b', 'c']
+tuple([1, 2])    # (1, 2)
+set([1, 2, 2])   # {1, 2}
+
+注意：
+int("abc") 会报错。
+int("3.14") 也会报错，需要先转 float。
+
+八、输入与输出
+---------------
+输出：
+print("Hello")
+print("年龄：", 18)
+print("姓名：%s，年龄：%d" % ("Tom", 18))
+print("姓名：{}，年龄：{}".format("Tom", 18))
+name = "Tom"
+age = 18
+print(f"姓名：{name}，年龄：{age}")
+
+输入：
+name = input("请输入姓名：")
+print("你好，", name)
+
+注意：input 返回的是字符串。
+如果需要数字，要转换：
+age = int(input("请输入年龄："))
+
+九、运算符
+-----------
+1. 算术运算符
+   +  加
+   -  减
+   *  乘
+   /  除，结果是浮点数
+   // 整除，向下取整
+   %  取余
+   ** 幂运算
+
+示例：
+print(7 / 2)    # 3.5
+print(7 // 2)   # 3
+print(7 % 2)    # 1
+print(2 ** 3)   # 8
+
+2. 比较运算符
+   == 等于
+   != 不等于
+   >  大于
+   <  小于
+   >= 大于等于
+   <= 小于等于
+
+3. 逻辑运算符
+   and 与
+   or  或
+   not 非
+
+示例：
+a = 10
+b = 20
+print(a > 5 and b > 10)  # True
+print(a > 15 or b > 10)  # True
+print(not a > 5)         # False
+
+4. 赋值运算符
+   =  +=  -=  *=  /=  //=  %=  **=
+
+示例：
+x = 10
+x += 5   # x = x + 5，结果是 15
+
+5. 成员运算符
+   in      在……中
+   not in  不在……中
+
+示例：
+print("a" in "abc")      # True
+print(3 in [1, 2, 3])    # True
+
+6. 身份运算符
+   is      判断是否是同一个对象
+   is not  判断是否不是同一个对象
+
+示例：
+a = [1, 2]
+b = a
+c = [1, 2]
+print(a is b)      # True
+print(a is c)      # False
+print(a == c)      # True
+
+十、字符串
+-----------
+字符串是字符序列，可以用单引号、双引号、三引号定义。
+
+s = "Python"
+
+1. 索引
+   print(s[0])   # P
+   print(s[1])   # y
+   print(s[-1])  # n
+
+2. 切片
+   语法：s[start:end:step]
+   print(s[0:3])   # Pyt
+   print(s[:3])    # Pyt
+   print(s[3:])    # hon
+   print(s[::-1])  # nohtyP，反转字符串
+
+3. 常用方法
+   s.upper()              转大写
+   s.lower()              转小写
+   s.strip()              去掉两端空白
+   s.lstrip()             去掉左边空白
+   s.rstrip()             去掉右边空白
+   s.replace("P", "J")    替换
+   s.split(",")           分割成列表
+   ",".join(["a", "b"])   拼接
+   s.find("th")           查找位置，找不到返回 -1
+   s.index("th")          查找位置，找不到报错
+   s.startswith("Py")     是否以某内容开头
+   s.endswith("on")       是否以某内容结尾
+   s.isdigit()            是否全是数字
+   s.isalpha()            是否全是字母
+   s.count("o")           统计出现次数
+
+4. 转义字符
+   \n 换行
+   \t 制表符
+   \\ 反斜杠
+   \' 单引号
+   \" 双引号
+
+5. 原始字符串
+   path = r"C:\Users\name\test"
+   加 r 表示不转义。
+
+6. f-string 格式化
+   name = "Tom"
+   age = 18
+   print(f"我是{name}，今年{age}岁")
+   print(f"计算结果：{3.14159:.2f}")  # 保留两位小数
+
+十一、列表 list
+---------------
+列表是有序、可变、可重复的序列。
+
+nums = [1, 2, 3, 4, 5]
+names = ["Tom", "Jerry", "Alice"]
+mixed = [1, "hello", True, 3.14]
+
+1. 访问元素
+   print(nums[0])    # 1
+   print(nums[-1])   # 5
+
+2. 切片
+   print(nums[1:4])  # [2, 3, 4]
+   print(nums[:3])   # [1, 2, 3]
+   print(nums[::2])  # [1, 3, 5]
+
+3. 修改元素
+   nums[0] = 100
+   print(nums)  # [100, 2, 3, 4, 5]
+
+4. 添加元素
+   nums.append(6)        # 末尾添加
+   nums.insert(0, 0)     # 指定位置插入
+   nums.extend([7, 8])   # 合并另一个列表
+
+5. 删除元素
+   nums.remove(3)        # 删除指定值
+   nums.pop()            # 删除最后一个
+   nums.pop(0)           # 删除指定索引
+   del nums[1]           # 删除指定索引
+   nums.clear()          # 清空
+
+6. 查找与统计
+   print(2 in nums)
+   print(nums.index(4))
+   print(nums.count(2))
+
+7. 排序
+   nums.sort()           # 升序
+   nums.sort(reverse=True)  # 降序
+   nums.reverse()        # 反转
+   sorted_nums = sorted(nums)  # 返回新列表
+
+8. 列表推导式
+   squares = [x * x for x in range(1, 6)]
+   print(squares)  # [1, 4, 9, 16, 25]
+
+   even = [x for x in range(10) if x % 2 == 0]
+   print(even)  # [0, 2, 4, 6, 8]
+
+9. 嵌套列表
+   matrix = [
+       [1, 2, 3],
+       [4, 5, 6]
+   ]
+   print(matrix[0][1])  # 2
+
+十二、元组 tuple
+----------------
+元组是有序、不可变的序列。
+
+t = (1, 2, 3)
+t2 = 1, 2, 3
+t3 = (1,)
+
+1. 访问
+   print(t[0])
+   print(t[-1])
+
+2. 切片
+   print(t[0:2])
+
+3. 元组不可修改
+   t[0] = 100 会报错。
+
+4. 解包
+   a, b, c = (1, 2, 3)
+   print(a, b, c)
+
+5. 常用方法
+   t.count(1)
+   t.index(2)
+   len(t)
+
+元组适合保存不希望被修改的数据。
+
+十三、字典 dict
+---------------
+字典是键值对集合，键必须唯一且不可变。
+
+person = {
+    "name": "Tom",
+    "age": 18,
+    "city": "Beijing"
+}
+
+1. 访问
+   print(person["name"])
+   print(person.get("age"))
+   print(person.get("gender", "未知"))
+
+2. 添加和修改
+   person["age"] = 19
+   person["gender"] = "男"
+
+3. 删除
+   del person["city"]
+   person.pop("age")
+   person.clear()
+
+4. 遍历
+   for key in person:
+       print(key)
+
+   for key, value in person.items():
+       print(key, value)
+
+   for value in person.values():
+       print(value)
+
+5. 常用方法
+   person.keys()
+   person.values()
+   person.items()
+   person.update({"age": 20})
+   person.setdefault("score", 0)
+
+6. 字典推导式
+   squares = {x: x * x for x in range(1, 6)}
+   print(squares)
+
+十四、集合 set
+--------------
+集合是无序、不重复的元素集合。
+
+s = {1, 2, 3, 3}
+print(s)  # {1, 2, 3}
+
+1. 创建
+   s1 = set()
+   s2 = {1, 2, 3}
+   s3 = set([1, 2, 2, 3])
+
+2. 添加和删除
+   s.add(4)
+   s.remove(1)
+   s.discard(100)  # 不存在不报错
+   s.pop()
+   s.clear()
+
+3. 集合运算
+   a = {1, 2, 3}
+   b = {3, 4, 5}
+
+   print(a | b)  # 并集 {1, 2, 3, 4, 5}
+   print(a & b)  # 交集 {3}
+   print(a - b)  # 差集 {1, 2}
+   print(a ^ b)  # 对称差集 {1, 2, 4, 5}
+
+4. 集合推导式
+   s = {x for x in range(5)}
+   print(s)
+
+十五、条件判断
+---------------
+语法：
+if 条件:
+    代码块
+elif 条件:
+    代码块
+else:
+    代码块
+
+示例：
+score = 85
+
+if score >= 90:
+    print("优秀")
+elif score >= 80:
+    print("良好")
+elif score >= 60:
+    print("及格")
+else:
+    print("不及格")
+
+三元表达式：
+result = "及格" if score >= 60 else "不及格"
+print(result)
+
+match-case（Python 3.10+）：
+command = "start"
+
+match command:
+    case "start":
+        print("开始")
+    case "stop":
+        print("停止")
+    case _:
+        print("未知命令")
+
+十六、循环
+-----------
+1. for 循环
+   for i in range(5):
+       print(i)
+
+   range 用法：
+   range(5)        # 0 到 4
+   range(1, 5)     # 1 到 4
+   range(1, 10, 2) # 1, 3, 5, 7, 9
+
+   遍历列表：
+   names = ["Tom", "Jerry"]
+   for name in names:
+       print(name)
+
+   遍历字典：
+   person = {"name": "Tom", "age": 18}
+   for key, value in person.items():
+       print(key, value)
+
+2. while 循环
+   count = 0
+   while count < 5:
+       print(count)
+       count += 1
+
+3. break 和 continue
+   break 跳出整个循环。
+   continue 跳过本次循环，进入下一次。
+
+示例：
+for i in range(10):
+    if i == 5:
+        break
+    print(i)
+
+for i in range(5):
+    if i == 2:
+        continue
+    print(i)
+
+4. 循环 else
+   for i in range(3):
+       print(i)
+   else:
+       print("循环正常结束")
+
+   如果循环被 break 中断，else 不会执行。
+
+5. enumerate 和 zip
+   names = ["Tom", "Jerry"]
+   for index, name in enumerate(names):
+       print(index, name)
+
+   a = [1, 2, 3]
+   b = ["a", "b", "c"]
+   for x, y in zip(a, b):
+       print(x, y)
+
+十七、函数
+-----------
+函数用于封装可重复使用的代码。
+
+1. 定义函数
+   def greet():
+       print("Hello")
+
+   greet()
+
+2. 带参数
+   def greet(name):
+       print(f"Hello, {name}")
+
+   greet("Tom")
+
+3. 返回值
+   def add(a, b):
+       return a + b
+
+   result = add(3, 5)
+   print(result)
+
+4. 默认参数
+   def greet(name="World"):
+       print(f"Hello, {name}")
+
+   greet()
+   greet("Tom")
+
+5. 关键字参数
+   def introduce(name, age):
+       print(name, age)
+
+   introduce(age=18, name="Tom")
+
+6. 可变参数
+   def sum_all(*args):
+       return sum(args)
+
+   print(sum_all(1, 2, 3, 4))
+
+   def print_info(**kwargs):
+       for key, value in kwargs.items():
+           print(key, value)
+
+   print_info(name="Tom", age=18)
+
+7. 作用域
+   局部变量：函数内部定义。
+   全局变量：函数外部定义。
+   使用 global 修改全局变量：
+   count = 0
+
+   def increase():
+       global count
+       count += 1
+
+   increase()
+   print(count)
+
+8. lambda 匿名函数
+   double = lambda x: x * 2
+   print(double(5))
+
+   nums = [1, 2, 3]
+   result = list(map(lambda x: x * 2, nums))
+   print(result)
+
+9. 递归
+   def factorial(n):
+       if n == 1:
+           return 1
+       return n * factorial(n - 1)
+
+   print(factorial(5))
+
+10. 文档字符串
+    def add(a, b):
+        """
+        返回两个数的和
+        """
+        return a + b
+
+    print(add.__doc__)
+
+十八、模块与包
+--------------
+模块是一个 .py 文件，包是包含多个模块的目录。
+
+1. 导入模块
+   import math
+   print(math.sqrt(16))
+
+2. 导入部分内容
+   from math import sqrt
+   print(sqrt(25))
+
+3. 起别名
+   import math as m
+   print(m.pi)
+
+4. 自定义模块
+   新建 my_module.py：
+   def hello():
+       print("Hello from module")
+
+   在另一个文件中：
+   import my_module
+   my_module.hello()
+
+5. __name__ 判断
+   if __name__ == "__main__":
+       print("当前文件被直接运行")
+
+6. 包
+   目录结构：
+   mypackage/
+       __init__.py
+       module1.py
+       module2.py
+
+   导入：
+   from mypackage import module1
+
+十九、异常处理
+--------------
+程序运行中可能出现错误，称为异常。
+
+1. 基本结构
+   try:
+       num = int(input("请输入数字："))
+       print(10 / num)
+   except ValueError:
+       print("输入的不是数字")
+   except ZeroDivisionError:
+       print("不能除以 0")
+   finally:
+       print("程序结束")
+
+2. else
+   try:
+       num = int("123")
+   except ValueError:
+       print("转换失败")
+   else:
+       print("转换成功", num)
+
+3. 捕获所有异常
+   try:
+       pass
+   except Exception as e:
+       print("发生异常：", e)
+
+4. 主动抛出异常
+   def check_age(age):
+       if age < 0:
+           raise ValueError("年龄不能为负数")
+       return age
+
+5. 自定义异常
+   class MyError(Exception):
+       pass
+
+   raise MyError("这是一个自定义异常")
+
+二十、文件操作
+--------------
+1. 写文件
+   with open("data.txt", "w", encoding="utf-8") as f:
+       f.write("Hello, Python\n")
+       f.write("第二行\n")
+
+2. 读文件
+   with open("data.txt", "r", encoding="utf-8") as f:
+       content = f.read()
+       print(content)
+
+3. 按行读取
+   with open("data.txt", "r", encoding="utf-8") as f:
+       for line in f:
+           print(line.strip())
+
+4. 追加内容
+   with open("data.txt", "a", encoding="utf-8") as f:
+       f.write("追加一行\n")
+
+5. 文件模式
+   r   只读，默认
+   w   写入，会覆盖
+   a   追加
+   x   独占创建
+   b   二进制
+   +   读写
+
+6. 读写 JSON
+   import json
+
+   data = {"name": "Tom", "age": 18}
+
+   with open("data.json", "w", encoding="utf-8") as f:
+       json.dump(data, f, ensure_ascii=False, indent=4)
+
+   with open("data.json", "r", encoding="utf-8") as f:
+       obj = json.load(f)
+       print(obj)
+
+二十一、面向对象
+----------------
+1. 定义类
+   class Person:
+       def __init__(self, name, age):
+           self.name = name
+           self.age = age
+
+       def say_hello(self):
+           print(f"我是{self.name}，今年{self.age}岁")
+
+2. 创建对象
+   p = Person("Tom", 18)
+   p.say_hello()
+
+3. self
+   self 表示当前对象，用于访问属性和方法。
+
+4. 实例变量和类变量
+   class Student:
+       school = "第一中学"  # 类变量
+
+       def __init__(self, name):
+           self.name = name  # 实例变量
+
+5. 继承
+   class Animal:
+       def eat(self):
+           print("吃东西")
+
+   class Dog(Animal):
+       def bark(self):
+           print("汪汪叫")
+
+   d = Dog()
+   d.eat()
+   d.bark()
+
+6. 重写方法
+   class Cat(Animal):
+       def eat(self):
+           print("猫吃鱼")
+
+7. super()
+   class Student(Person):
+       def __init__(self, name, age, grade):
+           super().__init__(name, age)
+           self.grade = grade
+
+8. 封装
+   Python 没有严格私有，但可以用下划线表示：
+   _name      受保护
+   __name     私有，名称会被改写
+
+9. 类方法、静态方法
+   class MyClass:
+       @classmethod
+       def class_method(cls):
+           print("类方法")
+
+       @staticmethod
+       def static_method():
+           print("静态方法")
+
+10. 常见魔术方法
+    __init__     初始化
+    __str__      打印对象时显示
+    __len__      长度
+    __eq__       相等判断
+
+示例：
+class Book:
+    def __init__(self, title):
+        self.title = title
+
+    def __str__(self):
+        return f"《{self.title}》"
+
+b = Book("Python入门")
+print(b)
+
+二十二、迭代器与生成器
+----------------------
+1. 迭代器
+   nums = [1, 2, 3]
+   it = iter(nums)
+   print(next(it))
+   print(next(it))
+   print(next(it))
+
+2. 生成器函数
+   def my_generator():
+       yield 1
+       yield 2
+       yield 3
+
+   for value in my_generator():
+       print(value)
+
+3. 生成器表达式
+   g = (x * x for x in range(5))
+   for value in g:
+       print(value)
+
+生成器不会一次性生成所有数据，适合处理大量数据。
+
+二十三、装饰器
+--------------
+装饰器用于在不修改原函数代码的情况下，增加额外功能。
+
+def my_decorator(func):
+    def wrapper():
+        print("函数执行前")
+        func()
+        print("函数执行后")
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print("Hello")
+
+say_hello()
+
+带参数的装饰器：
+def log(func):
+    def wrapper(*args, **kwargs):
+        print("调用函数：", func.__name__)
+        return func(*args, **kwargs)
+    return wrapper
+
+@log
+def add(a, b):
+    return a + b
+
+print(add(1, 2))
+
+二十四、常用内置函数
+-------------------
+len()       长度
+type()      类型
+int()       转整数
+float()     转浮点数
+str()       转字符串
+list()      转列表
+tuple()     转元组
+dict()      转字典
+set()       转集合
+sum()       求和
+max()       最大值
+min()       最小值
+abs()       绝对值
+round()     四舍五入
+sorted()    排序
+reversed()  反转
+range()     数字序列
+enumerate() 带索引遍历
+zip()       合并遍历
+map()       映射
+filter()    过滤
+all()       全部为真
+any()       任意为真
+
+示例：
+nums = [1, 2, 3, 4]
+print(sum(nums))
+print(max(nums))
+print(min(nums))
+print(sorted(nums, reverse=True))
+
+二十五、推导式
+--------------
+1. 列表推导式
+   nums = [x for x in range(10)]
+   even = [x for x in range(10) if x % 2 == 0]
+   squares = [x * x for x in range(5)]
+
+2. 字典推导式
+   d = {x: x * x for x in range(5)}
+
+3. 集合推导式
+   s = {x for x in range(5)}
+
+4. 生成器表达式
+   g = (x for x in range(5))
+
+二十六、常用标准库
+------------------
+1. math
+   import math
+   print(math.sqrt(16))
+   print(math.pi)
+   print(math.floor(3.8))
+   print(math.ceil(3.2))
+
+2. random
+   import random
+   print(random.randint(1, 10))
+   print(random.choice(["a", "b", "c"]))
+   random.shuffle([1, 2, 3])
+
+3. datetime
+   from datetime import datetime, date, timedelta
+
+   now = datetime.now()
+   print(now)
+   print(now.year, now.month, now.day)
+   print(now.strftime("%Y-%m-%d %H:%M:%S"))
+
+4. os
+   import os
+   print(os.getcwd())
+   print(os.listdir("."))
+   os.mkdir("test_dir")
+   os.rename("a.txt", "b.txt")
+
+5. sys
+   import sys
+   print(sys.version)
+   print(sys.argv)
+
+6. json
+   import json
+   s = json.dumps({"name": "Tom"})
+   obj = json.loads(s)
+
+7. re 正则
+   import re
+   text = "abc123"
+   result = re.findall(r"\d+", text)
+   print(result)  # ['123']
+
+二十七、虚拟环境与 pip
+---------------------
+1. 创建虚拟环境
+   python -m venv venv
+
+2. 激活
+   Windows:
+   venv\Scripts\activate
+
+   macOS / Linux:
+   source venv/bin/activate
+
+3. 安装包
+   pip install requests
+
+4. 查看已安装包
+   pip list
+
+5. 导出依赖
+   pip freeze > requirements.txt
+
+6. 安装依赖
+   pip install -r requirements.txt
+
+7. 退出虚拟环境
+   deactivate
+
+二十八、编码规范
+----------------
+1. 使用 4 个空格缩进。
+2. 每行不超过 79 或 99 个字符。
+3. 变量名、函数名用小写加下划线。
+4. 类名用大驼峰。
+5. 运算符两侧加空格。
+6. 函数之间空两行。
+7. 导入模块放在文件顶部。
+8. 添加必要注释。
+9. 避免使用无意义的变量名，如 a、b、c。
+10. 使用 with 管理文件资源。
+
+二十九、常见错误
+----------------
+1. SyntaxError 语法错误
+   原因：少了冒号、括号不匹配、缩进错误。
+
+2. NameError 名称错误
+   原因：使用了未定义的变量。
+
+3. TypeError 类型错误
+   原因：不同类型之间进行不支持的运算。
+   例如："1" + 1。
+
+4. ValueError 值错误
+   原因：类型正确但值不合适。
+   例如：int("abc")。
+
+5. IndexError 索引错误
+   原因：列表索引越界。
+
+6. KeyError 键错误
+   原因：字典中不存在该键。
+
+7. IndentationError 缩进错误
+   原因：缩进不一致。
+
+8. ZeroDivisionError 除零错误
+   原因：除数为 0。
+
+9. FileNotFoundError 文件未找到
+   原因：路径错误或文件不存在。
+
+三十、练习项目建议
+------------------
+1. 打印 Hello World。
+2. 简单计算器。
+3. 猜数字游戏。
+4. 判断闰年。
+5. 九九乘法表。
+6. 学生成绩管理。
+7. 通讯录管理。
+8. 文件读写练习。
+9. 统计字符串中单词出现次数。
+10. 用面向对象写一个图书管理系统。
+11. 用 requests 写简单爬虫。
+12. 用 json 保存和读取数据。
+13. 用 datetime 写倒计时。
+14. 用 random 写抽奖程序。
+15. 用 tkinter 写简单 GUI。
+
+三十一、学习路线
+----------------
+第一阶段：基础语法
+变量、数据类型、运算符、输入输出、条件、循环。
+
+第二阶段：常用结构
+字符串、列表、元组、字典、集合、函数。
+
+第三阶段：进阶基础
+模块、异常、文件、面向对象、生成器、装饰器。
+
+第四阶段：标准库与第三方库
+os、sys、json、datetime、re、requests、pandas。
+
+第五阶段：项目实战
+爬虫、数据分析、Web 开发、自动化办公、小游戏。
+
+三十二、总结
+------------
+Python 基础语法并不复杂，关键是多写代码。建议每天写一点，从简单例子开始，逐步增加难度。遇到错误不要害怕，学会看报错信息，使用 print 调试，查官方文档。掌握本文内容后，你已经具备继续学习 Python 进阶知识的基础。
+
+常用学习资源：
+1. Python 官方文档：docs.python.org
+2. PEP8 编码规范
+3. 菜鸟教程、W3School
+4. GitHub 开源项目
+5. LeetCode、牛客网刷题

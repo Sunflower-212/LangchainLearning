@@ -1,0 +1,22 @@
+from langchain_community.document_loaders import CSVLoader
+loader = CSVLoader(
+    file_path="./data/stu.csv",
+
+    csv_args={
+        "delimiter":",",    # 指定分隔符
+        "quotechar":'"',    # 指定带有分隔符文本的引号包围是单引号还是双引号
+        "fieldnames":["a","b","c","d"], # 如果数据没有表头可以通过这个参数指定
+    },
+    encoding="utf-8",       # 指定编码
+)
+
+# # 批量加载 .load() -> [Document,Document....]
+# documents = loader.load()
+#
+# for document in documents:
+#     print(type(document),document)
+
+# 懒加载 .lazy_load() 迭代器[Document] 大文档专用
+for doc in loader.lazy_load():
+    print(doc)
+
