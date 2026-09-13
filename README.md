@@ -5,5 +5,5 @@
 - 2、安装langchain包  
 `终端执行`
 ```terminal
-pip install langchain langchain-openai langchain-deepseek chromadb  
+pip install langchain langchain-openai langchain-deepseek chromadb  jq pypdf langchain_chroma
 ```
